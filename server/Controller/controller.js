@@ -12,4 +12,16 @@ async function getSpecialLabList(req,res){
     }
 };
 
-module.exports = {getSpecialLabList};
+async function getEventList(req,res){
+    try {   
+        const id = req.params.id;
+        const query = `select event_name from event_list where event_id = ${id};`; 
+        const response = await runQuery(query);
+        const eventListData = response.recordset[0];
+        res.status(200).send(eventListData);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+};
+
+module.exports = {getSpecialLabList, getEventList};
