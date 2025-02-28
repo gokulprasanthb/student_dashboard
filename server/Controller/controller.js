@@ -1,0 +1,15 @@
+const runQuery = require("../Constant/constant");
+
+async function getSpecialLabList(req,res){
+    try {   
+        const id = req.params.id;
+        const query = `select lab_name from lab_list where lab_id = ${id};`; 
+        const response = await runQuery(query);
+        const specialLabData = response.recordset[0];
+        res.status(200).send(specialLabData);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+};
+
+module.exports = {getSpecialLabList};
