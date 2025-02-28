@@ -1,39 +1,35 @@
 const runQuery = require("../Constant/constant");
 
-async function getSpecialLabList(req,res){
-    try {   
-        const id = req.params.id;
-        const query = `select lab_name from lab_list where lab_id = ${id};`; 
-        const response = await runQuery(query);
-        const specialLabData = response.recordset[0];
-        res.status(200).send(specialLabData);
+async function joinLab(req,res){
+    try {
+        const insertQuery = `insert into lab_join values ('${req.body.student_name}', '${req.body.email}','${req.body.roll_number}','${req.body.first_lab_name}','${req.body.second_lab_name}','${req.body.third_lab_name}');`;
+        const response = await runQuery(insertQuery);
+        if(response.rowsAffected>0)
+        {
+            res.status(200).json({message: "Request submitted successfully"});
+        }
+        else{
+            res.status(400).json({message: "oops! request not submitted"});
+        }
     } catch (error) {
         res.status(400).send(error.message);
     }
-};
+}
 
-async function getEventList(req,res){
-    try {   
-        const id = req.params.id;
-        const query = `select event_name from event_list where event_id = ${id};`; 
-        const response = await runQuery(query);
-        const eventListData = response.recordset[0];
-        res.status(200).send(eventListData);
+async function changeLab(req,res){
+    try {
+        const insertQuery = `insert into lab_change_request values ('${req.body.student_name}', '${req.body.email}','${req.body.current_lab_name}','${req.body.requested_lab_name}','${req.body.lab_change_reason}');`;
+        const response = await runQuery(insertQuery);
+        if(response.rowsAffected>0)
+        {
+            res.status(200).json({message: "Request submitted successfully"});
+        }
+        else{
+            res.status(400).json({message: "oops! request not submitted"});
+        }
     } catch (error) {
         res.status(400).send(error.message);
     }
-};
+}
 
-async function getStudentList(req,res){
-    try {   
-        const id = req.params.id;
-        const query = `select roll_number, student_name, email, department_name from student_list where student_list_id = ${id};`; 
-        const response = await runQuery(query);
-        const studentData = response.recordset[0];
-        res.status(200).send(studentData);
-    } catch (error) {
-        res.status(400).send(error.message);
-    }
-};
-
-module.exports = {getSpecialLabList, getEventList, getStudentList};
+module.exports = {joinLab, changeLab};
