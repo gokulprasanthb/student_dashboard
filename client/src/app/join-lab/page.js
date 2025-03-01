@@ -1,5 +1,6 @@
 "use client";
 
+import { addStudentToLab } from "@/service";
 import { useState } from "react";
 
 export default function RequestLabChange() {
@@ -16,9 +17,8 @@ export default function RequestLabChange() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    currentLab: "",
+    rollNumber : "",
     selectedLabs: [], // Store selected labs here
-    reason: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [requestStatus, setRequestStatus] = useState("Pending");
@@ -51,8 +51,16 @@ export default function RequestLabChange() {
       setRequestStatus(Math.random() > 0.5 ? "Approved" : "Rejected");
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {    
+    e.preventDefault(); 
+    const submitResponse = await addStudentToLab({
+      student_name : formData.name,
+      email : formData.email,
+      roll_number : formData.rollNumber,
+      first_lab_name: formData.selectedLabs[0], 
+      second_lab_name: formData.selectedLabs[1], 
+      third_lab_name: formData.selectedLabs[2]
+    });
     setSubmitted(true);
     setRequestStatus("Pending");
   };

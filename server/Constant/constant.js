@@ -3,7 +3,7 @@ const sql = require('mssql')
 const dbConfig = {
     user : "sa",
     password : "user",
-    database : "PIC",
+    database : "special_lab_management",
     server : "LAPTOP-S81EMQOT\\SQLEXPRESS",
     port : 1433, 
     options : {
@@ -11,7 +11,7 @@ const dbConfig = {
     }
 };
 
-async function runQuery(query){
+async function runQuery(query){ 
     const db = await sql.connect(dbConfig);
     try {
         const response = await db.query(query);

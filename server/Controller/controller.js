@@ -1,6 +1,7 @@
 const runQuery = require("../Constant/constant");
 
 async function joinLab(req,res){
+    console.log(req, "request");
     try {
         const insertQuery = `insert into lab_join values ('${req.body.student_name}', '${req.body.email}','${req.body.roll_number}','${req.body.first_lab_name}','${req.body.second_lab_name}','${req.body.third_lab_name}');`;
         const response = await runQuery(insertQuery);
