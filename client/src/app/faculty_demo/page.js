@@ -37,13 +37,46 @@ export default function FacultyDemo() {
   }, []);
   
   return (
-    <div>
-      <h3>Faculty Request Details</h3>
-      <p>Name: {requestDetails.name}</p>
-      <p>Email: {requestDetails.email}</p>
-      <p>Current Lab: {requestDetails.currentLab}</p>
-      <p>Requested Lab: {requestDetails.requestedLab}</p>
-      <p>Reason: {requestDetails.reason}</p>
-    </div>
+<div className="max-w-6xl mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-4">Lab Change Requests</h1>
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white shadow-md rounded-md">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="py-2 px-4 border">Student Name</th>
+              <th className="py-2 px-4 border">Email</th>
+              <th className="py-2 px-4 border">Current Lab</th>
+              <th className="py-2 px-4 border">Requested Lab</th>
+              <th className="py-2 px-4 border">Reason</th>
+              <th className="py-2 px-4 border">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+           
+              <tr className="border-t">
+                <td className="py-2 px-4 border">{requestDetails.name}</td>
+                <td className="py-2 px-4 border">{requestDetails.email}</td>
+                <td className="py-2 px-4 border">{requestDetails.currentLab}</td>
+                <td className="py-2 px-4 border">{requestDetails.requestedLab}</td>
+                <td className="py-2 px-4 border">{requestDetails.reason}</td>
+                <td className="py-2 px-4 border flex space-x-2">
+                  <button
+                    className="bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600"
+                    onClick={() => handleApprove(request.id)}
+                  >
+                    Approve
+                  </button>
+                  <button
+                    className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
+                    onClick={() => handleReject(request.id)}
+                  >
+                    Reject
+                  </button>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div> 
   );
 }
