@@ -9,3 +9,12 @@ export const addStudentToLab = async(payload) => {
         return error;
     }
 }
+
+export const requestLabChange = async(payload) => {
+    try {
+        const response = await client(`${BACKEND_URL}${USERS_ENDPOINTS.requestLabChange}`, payload, `${REQUEST_METHODS.POST}`);
+        return response;
+    } catch (error) {
+        return error;
+    }
+}

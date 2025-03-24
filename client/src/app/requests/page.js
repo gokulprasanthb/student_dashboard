@@ -1,5 +1,6 @@
 "use client";
 
+import { requestLabChange } from "@/service";
 import { useState } from "react";
 
 export default function RequestLabChange() {
@@ -27,8 +28,15 @@ export default function RequestLabChange() {
       setRequestStatus(Math.random() > 0.5 ? "Approved" : "Rejected");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const submitResponse = await requestLabChange({
+          student_name : formData.name,
+          email : formData.email,
+          current_lab : formData.currentLab,
+          requested_lab : formData.requestedLab,
+          reason : formData.reason
+    });
     setSubmitted(true);
     setRequestStatus("Pending");
   };

@@ -1,15 +1,13 @@
 import axios from "axios";
 
-export const client = async (endpoit, body, method) => {
+export const client = async (endpoint, body, method) => {
     const requestConfig = {
         method,
-        url : `${endpoit}`, 
-        body : body, 
+        url : `${endpoint}`, 
+        data: body,
         headers : {'content-type' : 'application/json'}
     }
     try {
-        console.log(requestConfig, "requestconfig");
-        
         const response = await axios(requestConfig);
         return response
     } catch (error) {
