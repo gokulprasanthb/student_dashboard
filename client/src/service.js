@@ -18,3 +18,12 @@ export const requestLabChange = async(payload) => {
         return error;
     }
 }
+
+export const requests = async() => {
+    try {
+        const response = await client(`${BACKEND_URL}${USERS_ENDPOINTS.requests}`, `${REQUEST_METHODS.GET}`);
+        return response;
+    } catch (error) {
+        return error;
+    }
+}

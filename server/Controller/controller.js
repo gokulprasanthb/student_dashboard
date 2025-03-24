@@ -34,4 +34,16 @@ async function changeLab(req,res){
     }
 }
 
-module.exports = {joinLab, changeLab};
+async function requestDetails(req,res){
+    try {   
+        const query = `select * from lab_change_request`; 
+        const response = await runQuery(query);
+        const requestData = response.recordset[0];
+        res.status(200).send(requestData);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+};
+module.exports = {joinLab, changeLab, requestDetails};
+
+//student_name, email, current_lab_name, requested_lab_name, lab_change_reason

@@ -43,6 +43,11 @@ export default function Navbar() {
             icon={<Settings size={20} />}
             label="Events"
           />
+          <NavLink
+            href="/faculty_demo"
+            icon={<Home size={20} />}
+            label="Faculty Demo"
+          />
           <NavLink href="/profile" icon={<Users size={20} />} label="Profile" />
         </div>
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>

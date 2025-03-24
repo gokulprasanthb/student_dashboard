@@ -4,13 +4,13 @@ import { requestLabChange } from "@/service";
 import { useState } from "react";
 
 export default function RequestLabChange() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    currentLab: "",
-    requestedLab: "",
-    reason: "",
-  });
+    const [formData, setFormData] = useState({
+      name: "",
+      email: "",
+      currentLab: "",
+      requestedLab: "",
+      reason: "",
+    });
   const [submitted, setSubmitted] = useState(false);
   const [requestStatus, setRequestStatus] = useState("Pending");
 
