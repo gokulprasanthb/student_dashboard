@@ -1,4 +1,5 @@
 const runQuery = require("../Constant/constant");
+const nodemailer = require("nodemailer");
 
 async function joinLab(req,res){
     try {
@@ -34,16 +35,28 @@ async function changeLab(req,res){
     }
 }
 
-async function requestDetails(req,res){
+async function labJoinRequests(req,res){
     try {   
-        const query = `select * from lab_change_request`; 
+        const query = `select * from lab_join`; 
         const response = await runQuery(query);
-        const requestData = response.recordset[0];
+        const requestData = response.recordset;
         res.status(200).send(requestData);
     } catch (error) {
         res.status(400).send(error.message);
     }
 };
-module.exports = {joinLab, changeLab, requestDetails};
+
+async function labChangeRequests(req,res){
+    try {   
+        const query = `select * from lab_change_request`; 
+        const response = await runQuery(query);
+        const requestData = response.recordset;
+        res.status(200).send(requestData);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+};
+
+module.exports = {joinLab, changeLab, labJoinRequests, labChangeRequests};
 
 //student_name, email, current_lab_name, requested_lab_name, lab_change_reason

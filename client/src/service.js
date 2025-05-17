@@ -19,9 +19,18 @@ export const requestLabChange = async(payload) => {
     }
 }
 
-export const requests = async() => {
+export const labChangeRequests = async() => {
     try {
-        const response = await client(`${BACKEND_URL}${USERS_ENDPOINTS.requests}`, `${REQUEST_METHODS.GET}`);
+        const response = await client(`${BACKEND_URL}${USERS_ENDPOINTS.labChangeRequests}`, `${REQUEST_METHODS.GET}`);
+        return response;
+    } catch (error) {
+        return error;
+    }
+}
+
+export const labJoinRequests = async() => {
+    try {
+        const response = await client(`${BACKEND_URL}${USERS_ENDPOINTS.labJoinRequests}`, `${REQUEST_METHODS.GET}`);
         return response;
     } catch (error) {
         return error;

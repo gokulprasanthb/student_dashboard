@@ -5,7 +5,7 @@ const dbConfig = {
     password : "user",
     database : "special_lab_management",
     server : "LAPTOP-S81EMQOT\\SQLEXPRESS",
-    port : 1433, 
+    port : 1433,  
     options : {
         trustServerCertificate : true
     }

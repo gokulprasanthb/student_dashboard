@@ -17,7 +17,7 @@ export default function RequestLabChange() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    rollNumber : "",
+    rollNumber: "",
     selectedLabs: [], // Store selected labs here
   });
   const [submitted, setSubmitted] = useState(false);
@@ -51,22 +51,24 @@ export default function RequestLabChange() {
       setRequestStatus(Math.random() > 0.5 ? "Approved" : "Rejected");
   };
 
-  const handleSubmit = async (e) => {    
-    e.preventDefault(); 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const submitResponse = await addStudentToLab({
-      student_name : formData.name,
-      email : formData.email,
-      roll_number : formData.rollNumber,
-      first_lab_name: formData.selectedLabs[0], 
-      second_lab_name: formData.selectedLabs[1], 
-      third_lab_name: formData.selectedLabs[2]
+      student_name: formData.name,
+      email: formData.email,
+      roll_number: formData.rollNumber,      
+      first_lab_name: availableLabs[formData.selectedLabs[0]]?.name,
+      second_lab_name: availableLabs[formData.selectedLabs[1]]?.name,
+      third_lab_name: availableLabs[formData.selectedLabs[2]]?.name,
     });
     setSubmitted(true);
     setRequestStatus("Pending");
+
+    console.log(formData.selectedLabs, "labs");
   };
 
   return (
-    <div className="max-w-4xl m-auto p-6 bg-white shadow-md rounded-md mt-6 flex">
+    <div className="max-w-4xl m-auto p-6 bg-indigo-950 shadow-md rounded-md mt-6 flex">
       <div className="w-full pr-6">
         <h1 className="text-2xl font-bold mb-4">Hey, Join a Lab</h1>
         {submitted ? (
@@ -76,7 +78,7 @@ export default function RequestLabChange() {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-gray-700">Name:</label>
+              <label className="block text-white">Name:</label>
               <input
                 type="text"
                 name="name"
@@ -87,7 +89,7 @@ export default function RequestLabChange() {
               />
             </div>
             <div>
-              <label className="block text-gray-700">Email:</label>
+              <label className="block text-white">Email:</label>
               <input
                 type="email"
                 name="email"
@@ -98,7 +100,7 @@ export default function RequestLabChange() {
               />
             </div>
             <div>
-              <label className="block text-gray-700">Roll Number:</label>
+              <label className="block text-white">Roll Number:</label>
               <input
                 type="rollNumber"
                 name="rollNumber"
@@ -109,7 +111,7 @@ export default function RequestLabChange() {
               />
             </div>
             <div>
-              <label className="block text-gray-700">
+              <label className="block text-white">
                 Select up to 3 Labs:
               </label>
               <div className="space-y-2 mt-1">
@@ -124,7 +126,7 @@ export default function RequestLabChange() {
                         lab.id.toString()
                       )}
                     />
-                    <label className="ml-2 text-gray-700">{lab.name}</label>
+                    <label className="ml-2 text-white">{lab.name}</label>
                   </div>
                 ))}
               </div>

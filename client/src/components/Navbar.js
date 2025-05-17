@@ -36,17 +36,13 @@ export default function Navbar() {
           <NavLink
             href="/requests"
             icon={<FileText size={20} />}
-            label="Requests"
+            label="Change Lab"
           />
-          <NavLink
-            href="/events"
-            icon={<Settings size={20} />}
-            label="Events"
-          />
+  
           <NavLink
             href="/faculty_demo"
             icon={<Home size={20} />}
-            label="Faculty Demo"
+            label="Faculty"
           />
           <NavLink href="/profile" icon={<Users size={20} />} label="Profile" />
         </div>
