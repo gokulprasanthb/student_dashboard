@@ -1,4 +1,4 @@
-export const BACKEND_URL = "https://student-dashboard-backend-kux6.onrender.com";
+export const BACKEND_URL = "http://localhost:5050";
 
 export const USERS_ENDPOINTS = {
     addStudentToLab : "/joinLab",
