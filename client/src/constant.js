@@ -1,4 +1,4 @@
-export const BACKEND_URL = "https://student-dashboard-backend-theta.vercel.app/";
+export const BACKEND_URL = "https://student-dashboard-backend-theta.vercel.app";
 
 export const USERS_ENDPOINTS = {
     addStudentToLab : "/joinLab",
