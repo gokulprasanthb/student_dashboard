@@ -1,13 +1,14 @@
+require('dotenv').config();
 const sql = require('mssql')
 
 const dbConfig = {
-    user : "sa",
-    password : "user",
-    database : "special_lab_management",
-    server : "LAPTOP-S81EMQOT\\SQLEXPRESS",
-    port : 1433,  
-    options : {
-        trustServerCertificate : true
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    server: process.env.DB_SERVER,
+    port: parseInt(process.env.DB_PORT) || 1433,
+    options: {
+        trustServerCertificate: true
     }
 };
 
