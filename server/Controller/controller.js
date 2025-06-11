@@ -1,5 +1,4 @@
 const runQuery = require("../Constant/constant");
-const nodemailer = require("nodemailer");
 
 async function joinLab(req,res){
     try {
